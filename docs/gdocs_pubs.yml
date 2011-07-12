@@ -2,17 +2,16 @@
 
 author: "Ilya Dmitrichenko"
 
-cite: &dummy00dsc
-  year: 1985         # Publication date
-  name: "The Title"
-  # URLs to view and download -
-  view: "http://example.com/dummy00dsc.htm"
-  file: "http://example.com/dummy00dsc.pdf"
-  # Optional things ...
-  book: "Somewhere on the Internet"
+dummy00dsc:
+ year: 1985         # Publication date
+ name: "The Title"
+ # URLs to view and download -
+ view: "http://example.com/dummy00dsc.htm"
+ file: "http://example.com/dummy00dsc.pdf"
+ # Optional things ...
+ book: "Somewhere on the Internet"
 
-
-cite: &idmit11wmi
+dmit11wmi:
  year: 2011
  name: "WMI - Wireless Music Instrumens"
  desc: "BSc project final report"

@@ -10,11 +10,23 @@ pubs = YAML::load(File.open('gdocs_pubs.yml', 'r')) ; # .to_hash ;
 
 # p pubs.methods
 
- p pubs ; puts
+ #p pubs ; puts
 
-# pubs.each { |p| p p }
+#pubs.each { |p| p p }
 
-#pubs.select('doc') { |k, v| puts "\n#{k}: #{v}\n" }
+p pubs.class
+
+puts "# Publications by #{pubs['author']}\n\n"
+
+pubs.each_pair do |k,v|
+
+  p k.class
+  p v.class
+
+  puts
+
+
+end
 
 ## need to delete the 'chrome=true' bit to make
 ## at appear full-screen :)
