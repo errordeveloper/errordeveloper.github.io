@@ -1,3 +1,6 @@
+<%# This script generate an HTML file with a list of pubs %>
+<%# from the YAML specification. Do not use this directly %>
+<%# - use 'make index.html && make commit' (see comments) %>
 <% require 'uri' %>
 <% require 'yaml' %>
 <% pubs = YAML::load(File.open('gdocs_pubs.yml', 'r')) ; %>
@@ -5,9 +8,8 @@
 <% @h= pubs.shift     %>
 <% @h= @h[:head]      %>
 <% @t= "#{@h[:title]} #{@h[:author]}" %>
-<head><title><%= @t %></title>
+<head><title><%= @t %></title></head>
 <% end %>
-</head>
 
 # <%= @t+"\n\n" %>
 <% pubs.each do |p| %>
@@ -15,6 +17,10 @@
   <%= "_(#{p[:desc]})_\n" if ( p.has_key?(:desc) && !p[:desc].empty? )%>
   <%= "[View][#{p[:cite]}-view] [Download][#{p[:cite]}-file]" %>
 <% end %>
+
+<%# We only need to encode '_', the rest of the url is safe. %>
+<%# That is because '_' is interpreted as 'emphesize', there %>
+<%# is still a problem with the '&' and e use sed to fix it. %>
 
 <% pubs.each do |p| %>
   <% v = URI.escape(p[:view], "_") %>
