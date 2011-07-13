@@ -6,9 +6,11 @@
 # <%= "#{head[:title]} #{head[:author]}\n\n" %>
 <% end %>
 <% pubs.each do |p| %>
-  <%= "#{p[:year]}\t-\t#{p[:name]}" %> <%= "(#{p[:desc]})" if ( p.has_key?(:desc) && !p[:desc].empty? )%>
-  <%= "\t\t[View][#{p[:cite]}-view] [Download][#{p[:cite]}-file]" %>
+* <%= "#{p[:year]}\t-\t#{p[:name]}" %>
+  <%= "_(#{p[:desc]})_\n" if ( p.has_key?(:desc) && !p[:desc].empty? )%>
+  <%= "[View][#{p[:cite]}-view] [Download][#{p[:cite]}-file]" %>
 <% end %>
+
 <% pubs.each do |p| %>
   <%= "[#{p[:cite]}-view]: #{p[:view]}" %>
   <%= "[#{p[:cite]}-file]: #{p[:file]}" %>
