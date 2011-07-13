@@ -1,12 +1,15 @@
+<% require 'uri' %>
 <% require 'yaml' %>
 <% pubs = YAML::load(File.open('gdocs_pubs.yml', 'r')) ; %>
 <% if pubs[0].has_key?(:head) %>
 <% @h= pubs.shift     %>
 <% @h= @h[:head]      %>
 <% @t= "#{@h[:title]} #{@h[:author]}" %>
-<head><title><%= @t %></title></head>
-# <%= @t+"\n\n" %>
+<head><title><%= @t %></title>
 <% end %>
+</head>
+
+# <%= @t+"\n\n" %>
 <% pubs.each do |p| %>
 * <%= "_#{p[:year]}_\t-\t#{p[:name]}" %>
   <%= "_(#{p[:desc]})_\n" if ( p.has_key?(:desc) && !p[:desc].empty? )%>
@@ -14,6 +17,15 @@
 <% end %>
 
 <% pubs.each do |p| %>
-  <%= "[#{p[:cite]}-view]: #{p[:view]}" %>
-  <%= "[#{p[:cite]}-file]: #{p[:file]}" %>
+  <% v = URI.escape(p[:view], "_") %>
+  <% f = URI.escape(p[:file], "_") %>
+  <%= "[#{p[:cite]}-view]: #{v}" %>
+  <%= "[#{p[:cite]}-file]: #{f}" %>
+  <script>
+  if ( location.hash == <%= "\"##{p[:cite]}-view\"" %> ) {
+       location.href =  <%= "\'#{v}\'" %> ;
+  } else if ( location.hash == <%= "\"##{p[:cite]}-file\"" %> ) {
+            location.href =  <%= "\'#{f}\'" %> ;
+  }
+</script>
 <% end %>

@@ -1,5 +1,5 @@
 index.html: gdocs_pubs.erb gdocs_pubs.yml
-	erb $< | bluecloth --fragment > $@
+	erb $< | bluecloth --fragment | sed 's/amp\;//g' >$@
 
 browse: index.html
 	surf $<
