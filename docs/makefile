@@ -1,5 +1,5 @@
 index.html: gdocs_pubs.erb gdocs_pubs.yml
-	erb $< | bluecloth > $@
+	erb $< | bluecloth --fragment > $@
 
 browse: index.html
 	surf $<

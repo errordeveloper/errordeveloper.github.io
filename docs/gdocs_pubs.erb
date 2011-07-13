@@ -1,12 +1,14 @@
 <% require 'yaml' %>
 <% pubs = YAML::load(File.open('gdocs_pubs.yml', 'r')) ; %>
 <% if pubs[0].has_key?(:head) %>
-<%  head = pubs.shift         %>
-<%  head = head[:head]        %>
-# <%= "#{head[:title]} #{head[:author]}\n\n" %>
+<% @h= pubs.shift     %>
+<% @h= @h[:head]      %>
+<% @t= "#{@h[:title]} #{@h[:author]}" %>
+<head><title><%= @t %></title></head>
+# <%= @t+"\n\n" %>
 <% end %>
 <% pubs.each do |p| %>
-* <%= "#{p[:year]}\t-\t#{p[:name]}" %>
+* <%= "_#{p[:year]}_\t-\t#{p[:name]}" %>
   <%= "_(#{p[:desc]})_\n" if ( p.has_key?(:desc) && !p[:desc].empty? )%>
   <%= "[View][#{p[:cite]}-view] [Download][#{p[:cite]}-file]" %>
 <% end %>
