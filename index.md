@@ -1,4 +1,8 @@
+<head><title>Audio DSP, Embedded Hardware + Software, Wireless Sensor Networks (and other related subjects of embedded systems engineering)</title></head>
+
+
 <tt>
+
 [=> [blog]][blog]
 
 [=> [code]][code]
@@ -6,6 +10,7 @@
 [=> [work]][work]
 
 [=> [pubs]][pubs]
+
 </tt>
 
 
