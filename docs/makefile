@@ -1,8 +1,11 @@
-index.html: gdocs_pubs.erb gdocs_pubs.yml
+index.html: genpage.erb details.yml
 	erb $< | bluecloth --fragment | sed 's/amp\;//g' >$@
 
-browse: index.html
-	surf $<
+update: addlink.rb details.yml
+	@diff -q details.yml details.yml~ || \
+		cp details.yml details.yml~
+	@ruby $< && \
+		make index.html
 
 commit: index.html
 	@git status && \
@@ -10,3 +13,6 @@ commit: index.html
 		git commit -a --edit && \
 		printf "Push? (Enter/Cancel): " && read && \
 		git push
+
+browse: index.html
+	surf $<

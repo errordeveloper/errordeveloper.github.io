@@ -3,7 +3,7 @@
 <%# - use 'make index.html && make commit' (see comments) %>
 <% require 'uri' %>
 <% require 'yaml' %>
-<% pubs = YAML::load(File.open('gdocs_pubs.yml', 'r')) ; %>
+<% pubs = YAML::load(File.open('details.yml', 'r')) ; %>
 <% if pubs[0].has_key?(:head) %>
 <% @h= pubs.shift     %>
 <% @h= @h[:head]      %>
