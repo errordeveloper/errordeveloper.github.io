@@ -1,4 +1,4 @@
-
+<tt>
 [=> [blog]][blog]
 
 [=> [code]][code]
@@ -6,6 +6,7 @@
 [=> [work]][work]
 
 [=> [pubs]][pubs]
+</tt>
 
 
 [blog]: http://new-synth.info/
