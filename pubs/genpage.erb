@@ -8,7 +8,10 @@
 <% @h= pubs.shift     %>
 <% @h= @h[:head]      %>
 <% @t= "#{@h[:title]} #{@h[:author]}" %>
-<head><title><%= @t %></title></head>
+<head>
+  <title><%= @t %></title>
+  <script type="text/javascript" src="../stats.js"></script>
+</head>
 <% end %>
 
 # <%= @t+"\n\n" %>
