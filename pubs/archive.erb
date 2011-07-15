@@ -3,7 +3,7 @@
 <%# - use 'make index.html && make commit' (see comments) %>
 <% require 'uri' %>
 <% require 'yaml' %>
-<% pubs = YAML::load(File.open('details.yml', 'r')) ; %>
+<% pubs = YAML::load(File.open('archive.yml', 'r')) ; %>
 <% if pubs[0].has_key?(:head) %>
 <% @h= pubs.shift     %>
 <% @h= @h[:head]      %>
@@ -39,7 +39,9 @@
 </script>
 <% end %>
 
-_For archived documents, please visit [this page][more]._
+<%# this really should be done in better way, i.e genpage.erb %>
+<%# and archive.erb have to be a single file ... TODO !!! !!! %>
 
-[more]: archive.html
+_For the list of publications, please visit [this page][pubs]._
 
+[pubs]: index.html

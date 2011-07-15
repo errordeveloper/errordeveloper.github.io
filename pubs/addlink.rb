@@ -1,10 +1,17 @@
 require 'yaml'
 
-class AddLink # < YAML
+class AddLink
 
   def initialize
 
-    file = File.open('details.yml', 'r') ;
+    if $*[0] != nil
+      #@file = 'archive.yml'
+      @file = $*[0]
+    else
+      @file = 'details.yml'
+    end
+
+    file = File.open(@file, 'r') ;
 
     @pubs = YAML::load(file) ;
 
@@ -25,13 +32,12 @@ class AddLink # < YAML
 
     puts "\nPlease enter the details of new publication\n\n"
 
-
     @ask.each do |h|
 
       h.each_pair do |k,v|
 
         print "\t#{v}: "
-        @new[k]=gets.chop
+        @new[k]=STDIN.gets.chop
 
       end
 
@@ -39,7 +45,7 @@ class AddLink # < YAML
 
     print "\nAre these details correct? "
 
-    self.add unless gets =~ /y.*/i
+    self.add unless STDIN.gets =~ /y.*/i
 
   end
 
@@ -54,13 +60,18 @@ class AddLink # < YAML
 
     # also year can be checked ..
 
+    # NORE - for a gdocs url we only
+    # need 'srcid=' bit and then just
+    # prepend this to it:
+    # https://docs.google.com/viewer?a=v&pid=explorer&[srcid=]
+
   end
 
   def write
 
     @pubs += [@new] ;
 
-    File.open('details.yml', 'w') { |file| file.write(pubs.to_yaml) } ;
+    File.open(@file, 'w') { |file| file.write(@pubs.to_yaml) } ;
 
     puts "\nWritten the details of #{@new[:name]}.\n\n"
 
@@ -68,6 +79,4 @@ class AddLink # < YAML
 
 end
 
-pub = AddLink.new
-
-pub.add
+pub = AddLink.new ; pub.add ; pub.write
