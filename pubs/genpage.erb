@@ -3,7 +3,15 @@
 <%# - use 'make index.html && make commit' (see comments) %>
 <% require 'uri' %>
 <% require 'yaml' %>
-<% pubs = YAML::load(File.open('details.yml', 'r')) ; %>
+
+<%# We cannot use ARGV in erb, so use ENV['GENPAGE_DATA'] %>
+<% if ENV['GENPAGE_DATA'] != nil %>
+<%  @d = ENV['GENPAGE_DATA'] %>
+<% else %>
+<% @d = 'details.yml' %>
+<% end %>
+
+<% pubs = YAML::load(File.open(@d, 'r')) ; %>
 <% if pubs[0].has_key?(:head) %>
 <% @h= pubs.shift     %>
 <% @h= @h[:head]      %>
@@ -39,7 +47,15 @@
 </script>
 <% end %>
 
+<% if @d == 'details.yml' %>
 _For archived documents, please visit [this page][more]._
 
 [more]: archive.html
+<% end %>
+
+<% if @d == 'archive.yml' %>
+_For the list of publications, please visit [this page][pubs]._
+
+[pubs]: index.html
+<% end %>
 
