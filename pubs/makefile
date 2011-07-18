@@ -12,7 +12,7 @@ upload:
 GENPAGE_PIPE = bluecloth --fragment | sed 's/amp\;//g'
 
 index.html: genpage.erb details.yml
-	env GENPAGE_DATA=archive.yml erb $< | $(GENPAGE_PIPE) >$@
+	env GENPAGE_DATA=details.yml erb $< | $(GENPAGE_PIPE) >$@
 
 archive.html: genpage.erb archive.yml
-	env GENPAGE_DATA=details.yml erb $< | $(GENPAGE_PIPE) >$@
+	env GENPAGE_DATA=archive.yml erb $< | $(GENPAGE_PIPE) >$@
