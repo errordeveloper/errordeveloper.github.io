@@ -1,4 +1,4 @@
-home: pubs root push
+home: pubs root about push
 
 root: index.html
 
@@ -25,5 +25,5 @@ push:
 view: index.html
 	surf $<
 
-index.html: index.md
+%.html: %.md
 	bluecloth --fragment $< | sed 's/amp\;//g' >$@
