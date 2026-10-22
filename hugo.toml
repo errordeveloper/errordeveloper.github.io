@@ -1,0 +1,11 @@
+baseURL = "https://errordeveloper.github.io/"
+locale = "en-GB"
+title = "Agentic Delivery"
+enableRobotsTXT = true
+
+[params]
+  description = "Observing the big shift"
+
+[markup]
+  [markup.highlight]
+    noClasses = false

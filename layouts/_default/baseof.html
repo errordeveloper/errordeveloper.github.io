@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ site.Params.description }}">
+    <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+    {{ with resources.Get "css/main.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+      <nav aria-label="Main navigation"><a href="{{ "posts/" | relURL }}">Writing</a></nav>
+    </header>
+    <main>{{ block "main" . }}{{ end }}</main>
+    <footer>© {{ now.Year }} Ilya Dmitrichenko (<a href="https://github.com/errordeveloper">@errordeveloper</a>)</footer>
+  </body>
+</html>
