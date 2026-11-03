@@ -4,7 +4,7 @@ title = "Agentic Delivery"
 enableRobotsTXT = true
 
 [params]
-  description = "Observing the big shift"
+  description = "just another engineer note observing the shift"
 
 [markup]
   [markup.highlight]
