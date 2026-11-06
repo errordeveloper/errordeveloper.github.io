@@ -12,7 +12,7 @@
         let pkgs = import nixpkgs { inherit system; };
         in {
           default = pkgs.mkShell {
-            packages = [ pkgs.hugo ];
+            packages = [ pkgs.hugo pkgs.whisper-cpp pkgs.ffmpeg ];
           };
         });
 
