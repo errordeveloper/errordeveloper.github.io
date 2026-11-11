@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 Semver voice note — machine transcript
 Source: semver-voice-note.m4a (13:46)
 Model: whisper.cpp large-v3, unquantized; English; Metal acceleration.
