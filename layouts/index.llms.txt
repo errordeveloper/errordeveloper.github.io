@@ -1,0 +1,11 @@
+# {{ site.Title }}
+
+> {{ site.Params.description }}
+
+Personal writing by Ilya Dmitrichenko on software engineering, cloud-native
+infrastructure, delivery systems, and AI-assisted development.
+
+## Posts
+
+{{ range where site.RegularPages "Section" "posts" }}{{ $page := . }}{{ with .OutputFormats.Get "markdown" }}- [{{ $page.Title }}]({{ .Permalink }})
+{{ end }}{{ end }}

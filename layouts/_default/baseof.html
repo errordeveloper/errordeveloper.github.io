@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ site.Params.description }}">
     <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+    {{ range .AlternativeOutputFormats }}
+      <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+    {{ end }}
     {{ with resources.Get "css/main.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
   </head>
   <body>

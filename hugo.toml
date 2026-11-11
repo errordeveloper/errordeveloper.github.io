@@ -3,6 +3,16 @@ locale = "en-GB"
 title = "Agentic Delivery"
 enableRobotsTXT = true
 
+[outputs]
+  home = ["html", "rss", "llms"]
+  page = ["html", "markdown"]
+
+[outputFormats.llms]
+  baseName = "llms"
+  mediaType = "text/plain"
+  isPlainText = true
+  root = true
+
 [params]
   description = "engineer observing the shift"
 
